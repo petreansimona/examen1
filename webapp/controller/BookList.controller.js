@@ -3,8 +3,10 @@ sap.ui.define([
 	"sap/ui/model/json/JSONModel",
 	"../model/formatterBook",
 	'sap/m/MessageToast',
-	"sap/m/MessageBox"
-], function (Controller, JSONModel, formatter,MessageToast, MessageBox) {
+	"sap/m/MessageBox",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function (Controller, JSONModel, formatter,MessageToast, MessageBox, Filter, FilterOperator) {
 	"use strict";
 	return Controller.extend("Quickstart.controller.BookList", {
 		formatter: formatter,
@@ -79,6 +81,38 @@ sap.ui.define([
 			})
 		},
 
+		onFilterISBN : function (oEvent) {
+
+			// build filter array
+			// var aFilter = [];
+			// var sQuery = oEvent.getParameter("query");
+			// if (sQuery) {
+			// 	aFilter.push(new Filter("ISBN", FilterOperator.Contains, sQuery));
+			// }
+
+			// filter binding
+			// var oList = this.byId("bookList");
+			// var oBinding = oList.getBinding("items");
+			// oBinding.filter(aFilter);
+
+			var sQuery = oEvent.getSource().getValue();  
+    
+    		var oFilter = new sap.ui.model.Filter({
+    
+			filters: [
+
+				new sap.ui.model.Filter("ISBN", sap.ui.model.FilterOperator.Contains, sQuery)
+				//new sap.ui.model.Filter("value2", sap.ui.model.FilterOperator.Contains, sQuery)
+
+			],
+			
+			and: false
+			
+			});
+			var oBinding = this.byId("bookList").getBinding("items");     
+         
+    		oBinding.filter([oFilter]);
+		},
 		// onCreate : function () {
 		// 	var oList = this.byId("listItem"),
 		// 		oBinding = oList.getBinding("items"),

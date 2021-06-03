@@ -3,11 +3,14 @@
 		xmlns="sap.m"
 		xmlns:mvc="sap.ui.core.mvc">
 	<Page title="{i18n>homePageTitle}" >
-		
+			
 			<Toolbar>
 				<Button press="handleCreate" text="CREATE"/>
 				<Button press="handleUpdate" text="UPDATE"/>
+				
+				
 			</Toolbar>
+			
 			<Table class="sapUiResponsiveMargin" width="auto" mode="Delete" id="CreateTable">
 				<columns>
 					<Column width="120px">
@@ -70,25 +73,22 @@
 				<Input value="" valueLiveUpdate="true" name="CreateTable1"/>
 				<Input value="" valueLiveUpdate="true" name="CreateTable2"/>
 				<Input value="" valueLiveUpdate="true" name="CreateTable3"/>
-				<!--<Input type="xs:dateTime" value="{DatePublished}" valueLiveUpdate="true"/>
+				<!--<Input type="xs:dateTime" value="{DatePublished}" valueLiveUpdate="true"/>-->
 				<DatePicker 
 					width="11em" 
-					id="date2" 
-					
-					locale="de-DE" 
+					id="date2"
 					
 					placeholder="{
-								path : 'DatePublished',
-								formatter : 'util.Formatter.sDate'
+								path : 'DatePublished'
 					}"
 					> 
-				</DatePicker >-->
-				<DateTimeInput
+				</DatePicker >
+				<!--<DateTimeInput
 						id="DTI3"
 						type="DateTime"
 						value=""
 						class="sapUiSmallMarginBottom"  
-						name="CreateTable4"/>
+						name="CreateTable4"/>-->
 				
 				<!--<xs:element name="DatePublished" type="xs:dateTime"/>-->
 				<Input value="" valueLiveUpdate="true" name="CreateTable5"/>

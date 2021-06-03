@@ -3,13 +3,21 @@ controllerName="Quickstart.controller.BookList"
    xmlns="sap.m"
    xmlns:mvc="sap.ui.core.mvc">
    <Table 
+    id="bookList"
     mode="Delete"
     delete="handleDelete"
-    update="handleUpdate"
-    create="handleCreate"
     class="sapUiResponsiveMargin"
     width="auto"
     items="{/BooksSet}" >
+    <headerToolbar>
+    <Toolbar>
+        <SearchField width="130px" search=".onFilterISBN" value="ISBN"/>
+				<SearchField width="180px" search=".onFilterTitle" value="title"/>
+				<SearchField width="180px" search=".onFilterAuthor" value="author"/>
+				<SearchField width="180px" search=".onFilterDatePublisher" value="date publisher"/>
+				<SearchField width="180px" search=".onFilterLanguage" value="language"/>
+    </Toolbar>
+    </headerToolbar>
     <columns>
       <Column width="120px">
         <header>
@@ -71,26 +79,22 @@ controllerName="Quickstart.controller.BookList"
       <Input value="{ISBN}" valueLiveUpdate="false"/>
       <Input value="{Title}" valueLiveUpdate="true"/>
       <Input value="{Author}" valueLiveUpdate="true"/>
-      <!--<Input type="xs:dateTime" value="{DatePublished}" valueLiveUpdate="true"/>
+      <!--<Input type="xs:dateTime" value="{DatePublished}" valueLiveUpdate="true"/>-->
       <DatePicker 
          width="11em" 
-         id="date2" 
-         
-         locale="de-DE" 
-         
+         id="date2"   
          placeholder="{
-                    path : 'DatePublished',
-                    formatter : 'util.Formatter.sDate'
+                    path : 'DatePublished'      
          }"
          > 
-      </DatePicker >-->
-      <DateTimeInput
+      </DatePicker >
+      <!--<DateTimeInput
 			id="DTI3"
 			type="DateTime"
 			value="{DatePublished}"
 			class="sapUiSmallMarginBottom" />
       
-      <!--<xs:element name="DatePublished" type="xs:dateTime"/>-->
+      <xs:element name="DatePublished" type="xs:dateTime"/>-->
       <Input value="{Language}" valueLiveUpdate="true"/>
       <Input value="{TotalNrBooks}" valueLiveUpdate="true"/>
       <Input value="{NrAvailable}" valueLiveUpdate="true"/>
