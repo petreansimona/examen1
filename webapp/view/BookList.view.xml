@@ -1,0 +1,105 @@
+<mvc:View
+controllerName="Quickstart.controller.BookList"
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc">
+   <Table 
+    mode="Delete"
+    delete="handleDelete"
+    update="handleUpdate"
+    create="handleCreate"
+    class="sapUiResponsiveMargin"
+    width="auto"
+    items="{/BooksSet}" >
+    <columns>
+      <Column width="120px">
+        <header>
+          <Text text="ISBN" />
+        </header>
+      </Column>
+      <Column width="190px">
+        <header>
+          <Text text="Title" />
+        </header>
+      </Column>
+      <Column width="190px">
+        <header>
+          <Text text="Author" />
+        </header>
+      </Column>
+      <Column width="190px">
+        <header>
+          <Text text="Date Published" />
+        </header>
+      </Column>
+      <Column width="77px">
+        <header>
+          <Text text="Language" />
+        </header>
+      </Column>
+      <Column width="106px">
+        <header>
+          <Text text="Total Nr Books" />
+        </header>
+      </Column>
+      <Column width="91px">
+        <header>
+          <Text text="Nr Available" />
+        </header>
+      </Column>
+      <Column width="105px">
+        <header>
+          <Text text="Created On" />
+        </header>
+      </Column>
+      <Column width="112px">
+        <header>
+          <Text text="Created By" />
+        </header>
+      </Column>
+      <Column width="105px">
+        <header>
+          <Text text="Changed On" />
+        </header>
+      </Column>
+      <Column width="112px">
+        <header>
+          <Text text="Changed By" />
+        </header>
+      </Column>
+    </columns>
+    <ColumnListItem>
+      <Input value="{ISBN}" valueLiveUpdate="false"/>
+      <Input value="{Title}" valueLiveUpdate="true"/>
+      <Input value="{Author}" valueLiveUpdate="true"/>
+      <!--<Input type="xs:dateTime" value="{DatePublished}" valueLiveUpdate="true"/>
+      <DatePicker 
+         width="11em" 
+         id="date2" 
+         
+         locale="de-DE" 
+         
+         placeholder="{
+                    path : 'DatePublished',
+                    formatter : 'util.Formatter.sDate'
+         }"
+         > 
+      </DatePicker >-->
+      <DateTimeInput
+			id="DTI3"
+			type="DateTime"
+			value="{DatePublished}"
+			class="sapUiSmallMarginBottom" />
+      
+      <!--<xs:element name="DatePublished" type="xs:dateTime"/>-->
+      <Input value="{Language}" valueLiveUpdate="true"/>
+      <Input value="{TotalNrBooks}" valueLiveUpdate="true"/>
+      <Input value="{NrAvailable}" valueLiveUpdate="true"/>
+      <Input value="{CreatedOn}" valueLiveUpdate="true"/>
+      <Input value="{CreatedBy}" valueLiveUpdate="true"/>
+      <Input value="{ChangedOn}" valueLiveUpdate="true"/>
+      <Input value="{ChangedBy}" valueLiveUpdate="true"/>
+    </ColumnListItem>
+  </Table>
+
+</mvc:View>
+
