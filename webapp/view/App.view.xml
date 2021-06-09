@@ -1,24 +1,17 @@
 <mvc:View 
 controllerName="Quickstart.controller.App"
    xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc">
+   xmlns:mvc="sap.ui.core.mvc"
+   displayBlock="true">
     <Shell >
         <App class="myAppDemoWT" id="app" width="120%" >
-         <!--  <pages>
+            <pages>
                 <Page title="{i18n>homePageTitle}">
-                    <headerContent>
-						<Button
-							icon="sap-icon://hello-world"
-							press=".onOpenDialog"/>
-					</headerContent>
-
                     <content>
-                        <mvc:XMLView viewName="Quickstart.view.HelloPanel"/>
-                        <mvc:XMLView viewName="Quickstart.view.InvoiceList"/>
                         <mvc:XMLView viewName="Quickstart.view.BookList"/>
                     </content>
                 </Page>
-            </pages>--> 
+            </pages>
         </App>
     </Shell>
 </mvc:View>

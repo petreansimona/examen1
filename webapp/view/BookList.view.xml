@@ -1,109 +1,47 @@
 <mvc:View
-controllerName="Quickstart.controller.BookList"
-   xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc">
-   <Table 
-    id="bookList"
-    mode="Delete"
-    delete="handleDelete"
-    class="sapUiResponsiveMargin"
-    width="auto"
-    items="{/BooksSet}" >
-    <headerToolbar>
-    <Toolbar>
-        <SearchField width="130px" search=".onFilterISBN" value="ISBN"/>
-				<SearchField width="180px" search=".onFilterTitle" value="title"/>
-				<SearchField width="180px" search=".onFilterAuthor" value="author"/>
-				<SearchField width="180px" search=".onFilterDatePublisher" value="date publisher"/>
-				<SearchField width="180px" search=".onFilterLanguage" value="language"/>
-    </Toolbar>
-    </headerToolbar>
-    <columns>
-      <Column width="120px">
-        <header>
-          <Text text="ISBN" />
-        </header>
-      </Column>
-      <Column width="190px">
-        <header>
-          <Text text="Title" />
-        </header>
-      </Column>
-      <Column width="190px">
-        <header>
-          <Text text="Author" />
-        </header>
-      </Column>
-      <Column width="190px">
-        <header>
-          <Text text="Date Published" />
-        </header>
-      </Column>
-      <Column width="77px">
-        <header>
-          <Text text="Language" />
-        </header>
-      </Column>
-      <Column width="106px">
-        <header>
-          <Text text="Total Nr Books" />
-        </header>
-      </Column>
-      <Column width="91px">
-        <header>
-          <Text text="Nr Available" />
-        </header>
-      </Column>
-      <Column width="105px">
-        <header>
-          <Text text="Created On" />
-        </header>
-      </Column>
-      <Column width="112px">
-        <header>
-          <Text text="Created By" />
-        </header>
-      </Column>
-      <Column width="105px">
-        <header>
-          <Text text="Changed On" />
-        </header>
-      </Column>
-      <Column width="112px">
-        <header>
-          <Text text="Changed By" />
-        </header>
-      </Column>
-    </columns>
-    <ColumnListItem>
-      <Input value="{ISBN}" valueLiveUpdate="false"/>
-      <Input value="{Title}" valueLiveUpdate="true"/>
-      <Input value="{Author}" valueLiveUpdate="true"/>
-      <!--<Input type="xs:dateTime" value="{DatePublished}" valueLiveUpdate="true"/>-->
-      <DatePicker 
-         width="11em" 
-         id="date2"   
-         placeholder="{
-                    path : 'DatePublished'      
-         }"
-         > 
-      </DatePicker >
-      <!--<DateTimeInput
-			id="DTI3"
-			type="DateTime"
-			value="{DatePublished}"
-			class="sapUiSmallMarginBottom" />
-      
-      <xs:element name="DatePublished" type="xs:dateTime"/>-->
-      <Input value="{Language}" valueLiveUpdate="true"/>
-      <Input value="{TotalNrBooks}" valueLiveUpdate="true"/>
-      <Input value="{NrAvailable}" valueLiveUpdate="true"/>
-      <Input value="{CreatedOn}" valueLiveUpdate="true"/>
-      <Input value="{CreatedBy}" valueLiveUpdate="true"/>
-      <Input value="{ChangedOn}" valueLiveUpdate="true"/>
-      <Input value="{ChangedBy}" valueLiveUpdate="true"/>
-    </ColumnListItem>
-  </Table>
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="Quickstart.controller.BookList"
+	height="150%">
+  <Page>
+
+    <Input id="ISBN" valueLiveUpdate="true" placeholder="Enter ISBN" width="auto"/>
+    <Input id="Author" valueLiveUpdate="true" placeholder="Enter Author" width="auto"/>
+    <Input id="Title" valueLiveUpdate="true" placeholder="Enter Title" width="25%"/>
+    <DateTimePicker id="Datepublished" valueFormat="yyyy-MM-ddTHH:mm:ss" placeholder="Enter DatePublished" width="auto"/>
+    <Input id="Language" valueLiveUpdate="true" placeholder="Enter Language" width="auto"/>
+    <Input id="TotalNrBooks" valueLiveUpdate="true" placeholder="Enter TotalNrBooks" width="auto"/>
+    <Input id="NrAvailable" valueLiveUpdate="true" placeholder="Enter NrAvailable" width="auto"/>
+
+    <Button text="CREATE" press="handleCreate" width="auto"/>
+    <Button text="UPDATE" press="handleUpdate" width="auto"/>
+    <Button text="DELETE" press="handleDelete" width="auto"/>
+    
+    <VBox fitContainer="true" height="1000px">
+
+      <smartTable:SmartTable entitySet="BooksSet" id="bookTable"
+        tableType="Table"
+        width="auto"
+		    editable="false" 
+        smartFilterId="smartFilterBar" 
+        useVariantManagement="false" useTablePersonalisation="true" header="BooksSet"
+        showRowCount="true" 
+        useExportToExcel="false" 
+        enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true"
+        initiallyVisibleFields="ISBN,Author,Title,DatePublished,Language,TotalNrBooks,NrAvailable,CreatedOn,CreatedBy,ChangedOn,ChangedBy">
+        <smartTable:layoutData>
+          <FlexItemData growFactor="1" baseSize="0%" />
+        </smartTable:layoutData>
+
+      </smartTable:SmartTable>
+
+    </VBox>
+
+  </Page>
 
 </mvc:View>
 
